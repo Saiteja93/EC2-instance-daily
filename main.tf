@@ -33,8 +33,13 @@ resource "aws_instance" "terraform-one" {
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
 
+  root_block_device {
+    volume_size = 50       # 50GB volume
+    volume_type = "gp2"    # General Purpose SSD (or gp3, io1, etc.)
+  }
+
   tags = {
-    Name = "cluster"
+    Name = "workstation"
   }
 }
 
