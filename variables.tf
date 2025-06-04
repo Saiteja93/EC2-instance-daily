@@ -30,5 +30,9 @@ variable "ami_id" {
 # Optional, default value is t3.micro. User can always override
 # t3.micro, t3.medium, t3.small
 variable "instance_type" {
-    default = "t3.micro" 
+    default = "t2.small" 
+    }
+
+variable "instance_type_agent" {
+    default = "t2.micro" 
     }

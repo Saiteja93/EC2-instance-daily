@@ -26,7 +26,7 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 # EC2 Instance
-resource "aws_instance" "terraform" {
+resource "aws_instance" "terraform-one" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
   # subnet_id                   = data.aws_subnet_ids.default.ids[0]
@@ -34,7 +34,19 @@ resource "aws_instance" "terraform" {
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
 
   tags = {
-    Name = "jenkins-master"
+    Name = "cluster"
+  }
+}
+
+resource "aws_instance" "terraform-two" {
+  ami                         = var.ami_id
+  instance_type               = var.instance_type_agent
+  # subnet_id                   = data.aws_subnet_ids.default.ids[0]
+  associate_public_ip_address = true
+  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+
+  tags = {
+    Name = "jenkins-agent"
   }
 }
 
