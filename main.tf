@@ -38,7 +38,7 @@ resource "aws_instance" "terraform-one" {
   }
 }
 
-resource "aws_instance" "terraform-two" {
+/* resource "aws_instance" "terraform-two" {
   ami                         = var.ami_id
   instance_type               = var.instance_type_agent
   # subnet_id                   = data.aws_subnet_ids.default.ids[0]
@@ -48,7 +48,7 @@ resource "aws_instance" "terraform-two" {
   tags = {
     Name = "jenkins-agent"
   }
-}
+} */
 
 resource "aws_default_vpc" "default" {
   tags = {
